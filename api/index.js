@@ -5,10 +5,11 @@ require("dotenv").config();
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const PORT = process.env.PORT || 7000;
 
 app.use(cors());
 app.use(express.json());
-const PORT = process.env.PORT || 5000;
+
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
 // MongoDB URI
