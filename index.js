@@ -9,14 +9,6 @@ const PORT = process.env.PORT || 7000;
 
 app.use(cors());
 app.use(express.json());
-// Set Content-Security-Policy (CSP)
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' https://vercel.live"
-  );
-  next();
-});
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
