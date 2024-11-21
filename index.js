@@ -49,8 +49,10 @@ async function run() {
 
     // Route to get all cars
     app.get("/cars", async (req, res) => {
+      console.log("GET /cars route accessed"); // Debug log
       try {
         const cars = await CarsModel.find().toArray(); // Direct fetch without cache
+        console.log(cars);
         res.json(cars);
       } catch (error) {
         console.error("Error fetching cars:", error.message);
@@ -170,6 +172,9 @@ run().catch(console.dir);
 // Home route
 app.get("/", (req, res) => {
   res.send("Welcome to My Express Server with MongoDB!");
+});
+app.get("/test", (req, res) => {
+  res.send("Test route is working");
 });
 
 // Start the server
