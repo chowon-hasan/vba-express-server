@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+require("dotenv").config();
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
-dotenv.config(); // Load environment variables from .env
-
+app.use(cors());
+app.use(express.json());
 const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
@@ -21,9 +22,6 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
-
-app.use(cors());
-app.use(express.json());
 
 async function run() {
   try {
